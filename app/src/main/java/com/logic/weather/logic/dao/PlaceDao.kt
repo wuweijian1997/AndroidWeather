@@ -6,8 +6,9 @@ import com.google.gson.Gson
 import com.logic.weather.WeatherApplication
 import com.logic.weather.logic.model.Place
 
+//单例类
 object PlaceDao {
-    const val placeKey = "place"
+    private const val placeKey = "place"
     fun savePlace(place: Place) {
         sharedPreferences().edit {
             putString(placeKey, Gson().toJson(place))
