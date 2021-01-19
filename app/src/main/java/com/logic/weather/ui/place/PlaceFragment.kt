@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Message
 import android.text.Editable
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,8 +19,6 @@ import com.logic.weather.MainActivity
 import com.logic.weather.WeatherActivity
 import com.logic.weather.databinding.FragmentPlaceBinding
 import com.logic.weather.util.TimerUtil
-import java.time.Instant
-import java.util.*
 
 class PlaceFragment : Fragment() {
     val viewModel by lazy { ViewModelProviders.of(this).get(PlaceViewModel::class.java) }
