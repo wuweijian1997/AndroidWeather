@@ -18,9 +18,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.logic.weather.MainActivity
 import com.logic.weather.R
 import com.logic.weather.WeatherActivity
+import com.logic.weather.databinding.FragmentPlaceBinding
 
 class PlaceFragment : Fragment() {
     val viewModel by lazy { ViewModelProviders.of(this).get(PlaceViewModel::class.java) }
+    private lateinit var binding: FragmentPlaceBinding
 
     private lateinit var adapter: PlaceAdapter
 
@@ -29,7 +31,8 @@ class PlaceFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_place, container, false)
+        binding = FragmentPlaceBinding.inflate(inflater)
+        return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -46,13 +49,13 @@ class PlaceFragment : Fragment() {
             return
         }
         val layoutManager = LinearLayoutManager(activity)
-        val recyclerView = view!!.findViewById<RecyclerView>(R.id.recyclerView)
+        val recyclerView = binding.recyclerView
         recyclerView.layoutManager = layoutManager
         adapter = PlaceAdapter(this, viewModel.placeList)
         recyclerView.adapter = adapter
 
-        val searchPlaceEdit = view!!.findViewById<EditText>(R.id.searchPlaceEdit)
-        val bgImageView = view!!.findViewById<ImageView>(R.id.bgImageView)
+        val searchPlaceEdit = binding.searchPlaceEdit
+        val bgImageView = binding.bgImageView
         searchPlaceEdit.addTextChangedListener { text: Editable? ->
             val content = text.toString()
             if (content.isNotEmpty()) {

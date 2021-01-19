@@ -1,6 +1,5 @@
 package com.logic.weather.logic
 
-import android.util.Log
 import androidx.lifecycle.liveData
 import com.logic.weather.logic.dao.PlaceDao
 import com.logic.weather.logic.model.Place
@@ -9,8 +8,6 @@ import com.logic.weather.logic.network.WeatherNetwork
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
-import java.lang.Exception
-import java.lang.RuntimeException
 import kotlin.coroutines.CoroutineContext
 
 object Repository {
