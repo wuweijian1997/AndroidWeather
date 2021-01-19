@@ -10,6 +10,7 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
 import kotlin.coroutines.CoroutineContext
 
+///单例类
 object Repository {
     fun searchPlaces(query: String) = fire(Dispatchers.IO) {
         val placeResponse = WeatherNetwork.searchPlaces(query)

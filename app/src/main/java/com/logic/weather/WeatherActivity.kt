@@ -1,6 +1,7 @@
 package com.logic.weather
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
@@ -22,6 +23,16 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class WeatherActivity : AppCompatActivity() {
+    //静态方法
+    companion object {
+        fun open(context: Context, locationLng: String, locationLat: String, placeName: String) {
+            val intent = Intent(context, WeatherActivity::class.java)
+            intent.putExtra("location_lng",locationLng)
+            intent.putExtra("location_lat",locationLat)
+            intent.putExtra("place_name",placeName)
+            context.startActivity(intent)
+        }
+    }
     val viewModel by lazy { ViewModelProviders.of(this).get(WeatherViewModel::class.java) }
     lateinit var swipeRefresh: SwipeRefreshLayout
     lateinit var drawerLayout: DrawerLayout
