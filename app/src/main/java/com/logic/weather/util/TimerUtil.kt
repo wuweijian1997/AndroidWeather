@@ -1,6 +1,5 @@
 package com.logic.weather.util
 
-import android.os.Message
 import java.util.*
 
 class TimerUtil {
