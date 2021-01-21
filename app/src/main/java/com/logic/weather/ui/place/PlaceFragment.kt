@@ -13,7 +13,7 @@ import androidx.annotation.RequiresApi
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.logic.weather.MainActivity
 import com.logic.weather.WeatherActivity
@@ -21,7 +21,7 @@ import com.logic.weather.databinding.FragmentPlaceBinding
 import com.logic.weather.util.TimerUtil
 
 class PlaceFragment : Fragment() {
-    val viewModel by lazy { ViewModelProviders.of(this).get(PlaceViewModel::class.java) }
+    val viewModel by lazy { ViewModelProvider(this)[PlaceViewModel::class.java] }
     private lateinit var binding: FragmentPlaceBinding
 
     private lateinit var adapter: PlaceAdapter
@@ -75,7 +75,7 @@ class PlaceFragment : Fragment() {
                 bgImageView.visibility = View.VISIBLE
             }
         }
-        viewModel.placeLiveData.observe(this, Observer { result ->
+        viewModel.placeLiveData.observe(viewLifecycleOwner, Observer { result ->
             val places = result.getOrNull()
             if (places != null) {
                 recyclerView.visibility = View.VISIBLE
